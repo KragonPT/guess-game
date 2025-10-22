@@ -1,23 +1,23 @@
 import random
 
-def jogar():
-    numero = random.randint (1, 10)
-    tentativas = 3
+def play():
+    number = random.randint (1, 10)
+    trys = 3
 
-    while tentativas > 0:
-        chute = int(input("Adivinha o numero ente 1 e 10: "))
+    while trys > 0:
+        guess = int(input("Adivinha o numero ente 1 e 10: "))
 
-        if chute == numero:
+        if guess == number:
            print("Parabéns! Acertaste!")
            return
-        elif chute < numero:
+        elif guess < number:
            print("o numero é maior")
         else:
            print("o numero é menor")
 
-        tentativas -= 1
-        print(" tentantivas restantes", tentativas)
+        trys -= 1
+        print(" tentantivas restantes", trys)
 
-    print("Perdeste! O numero era: ", numero)
+    print("Perdeste! O numero era: ", number)
 if __name__=="__main__":
-   jogar()
+   play()
