@@ -40,7 +40,6 @@ def jogar():
             break
         elif chute < numero:
             print(Fore.BLUE + "O número é maior.")
->>>>>>> 8987cab (Add colors and improve game interface)
         else:
             print(Fore.BLUE + "O número é menor.")
 
@@ -50,11 +49,10 @@ def jogar():
     if tentativas == 0:
         print(Fore.RED + "Acabaram as tentativas! O número era:", numero)
 
-# Loop para jogar de novo
+# Loop to play again
 while True:
     jogar()
     replay = input(Fore.CYAN + "Queres jogar de novo? (s/n): ").lower()
     if replay != "s":
         print(Fore.CYAN + "Obrigado por jogar! Até à próxima.")
         break
->>>>>>> 8987cab (Add colors and improve game interface)
