@@ -1,23 +1,60 @@
 import random
+from colorama import init, Fore, Style
+init(autoreset=True) # Allow colors back to normal after each print
 
-def play():
-    number = random.randint (1, 10)
-    trys = 3
+def jogar():
+    print(Fore.CYAN + "Bem-vindo ao Adivinha o Número!")
 
-    while trys > 0:
-        guess = int(input("Adivinha o numero ente 1 e 10: "))
+    # Choose Difficulty
+    print("Escolhe um nível de dificuldade:")
+    print("1 - Fácil (1 a 10)")
+    print("2 - Médio (1 a 50)")
+    print("3 - Difícil (1 a 100)")
 
-        if guess == number:
-           print("Parabéns! Acertaste!")
-           return
-        elif guess < number:
-           print("o numero é maior")
+    nivel = input("Nível (1/2/3): ")
+    if nivel == "1":
+        max_num = 10
+        tentativas = 5
+    elif nivel == "2":
+        max_num = 50
+        tentativas = 7
+    elif nivel == "3":
+        max_num = 100
+        tentativas = 10
+    else:
+        print(Fore.YELLOW + "Nível inválido, escolhendo Fácil por defeito.")
+        max_num = 10
+        tentativas = 5
+
+    numero = random.randint(1, max_num)
+
+    while tentativas > 0:
+        try:
+            chute = int(input(Fore.MAGENTA + f"Adivinha o número entre 1 e {max_num}: "))
+        except ValueError:
+            print(Fore.RED + "Por favor, insere um número válido.")
+            continue
+
+        if chute == numero:
+            print(Fore.GREEN + "Parabéns! Acertaste!")
+            break
+        elif chute < numero:
+            print(Fore.BLUE + "O número é maior.")
+>>>>>>> 8987cab (Add colors and improve game interface)
         else:
-           print("o numero é menor")
+            print(Fore.BLUE + "O número é menor.")
 
-        trys -= 1
-        print(" tentantivas restantes", trys)
+        tentativas -= 1
+        print(Fore.YELLOW + "Tentativas restantes:", tentativas)
 
-    print("Perdeste! O numero era: ", number)
-if __name__=="__main__":
-   play()
+    if tentativas == 0:
+        print(Fore.RED + "Acabaram as tentativas! O número era:", numero)
+
+# Loop para jogar de novo
+while True:
+    jogar()
+    replay = input(Fore.CYAN + "Queres jogar de novo? (s/n): ").lower()
+    if replay != "s":
+        print(Fore.CYAN + "Obrigado por jogar! Até à próxima.")
+        break
+>>>>>>> 8987cab (Add colors and improve game interface)
